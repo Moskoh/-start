@@ -21,12 +21,11 @@
 # SOFTWARE.
 
 import os
-
 from yt_dlp import YoutubeDL
 
 ydl_opts = {
     "format": "bestaudio/best",
-    "outtmpl": "downloads/%(id)s.%(ext)s",
+    "outtmpl": "downloads/%(id)s_%(title)s.%(ext)s",  # تخصيص اسم الملف
     "geo_bypass": True,
     "nocheckcertificate": True,
     "quiet": True,
@@ -40,12 +39,12 @@ ydl_opts = {
         }
     ],
 }
-ydl = YoutubeDL(ydl_opts)
 
+ydl = YoutubeDL(ydl_opts)
 
 def audio_dl(url: str) -> str:
     sin = ydl.extract_info(url, False)
-    x_file = os.path.join("downloads", f"{sin['id']}.mp3")
+    x_file = os.path.join("downloads", f"{sin['id']}_{sin['title']}.mp3")  # تضمين العنوان
     if os.path.exists(x_file):
         return x_file
     ydl.download([url])
