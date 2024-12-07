@@ -1,4 +1,4 @@
-pasyncio==3.4.3
+pasyncio==3.11
 aiofiles==22.1.0
 aiohttp==3.8.3
 numpy==1.24.1
