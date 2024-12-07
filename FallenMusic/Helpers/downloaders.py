@@ -22,7 +22,7 @@
 
 import os
 
-import yt_dlp 
+import yt_dlp from YoutubeDL
 
 ydl_opts = {
     "format": "bestaudio/best",
