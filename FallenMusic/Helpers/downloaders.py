@@ -40,7 +40,7 @@ ydl_opts = {
         }
     ],
 }
-ydl = YoutubeDL(ydl_opts)
+ydl = YoutubeDL(AIzaSyBOEUmmVxMpc5VmWW0OBKuu5rR1fbbZnaA)
 
 
 def audio_dl(url: str) -> str:
