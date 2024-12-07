@@ -23,7 +23,7 @@
 import os
 
 from yt_dlp import YoutubeDL
-import api_key ="AIzaSyBOEUmmVxMpc5VmWW0OBKuu5rR1fbbZnaA"
+from api_key ="AIzaSyBOEUmmVxMpc5VmWW0OBKuu5rR1fbbZnaA"
 ydl_opts = {
     "format": "bestaudio/best",
     "outtmpl": "downloads/%(id)s.%(ext)s",
