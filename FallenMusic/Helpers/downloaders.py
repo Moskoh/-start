@@ -22,7 +22,7 @@
 
 import os
 
-from yt_dlp 
+import yt_dlp 
 
 ydl_opts = {
     "format": "bestaudio/best",
