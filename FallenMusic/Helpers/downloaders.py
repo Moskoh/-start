@@ -20,32 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
-from yt_dlp import YoutubeDL
+import yt_dlp
 
 ydl_opts = {
-    "format": "bestaudio/best",
-    "outtmpl": "downloads/%(id)s_%(title)s.%(ext)s",  # تخصيص اسم الملف
-    "geo_bypass": True,
-    "nocheckcertificate": True,
-    "quiet": True,
-    "no_warnings": True,
-    "prefer_ffmpeg": True,
-    "postprocessors": [
-        {
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "mp3",
-            "preferredquality": "320",
-        }
-    ],
+    'format': 'best',  # اختيار أفضل جودة
+    'outtmpl': '%(title)s.%(ext)s',  # تنسيق اسم الملف
+    'noprogress': True,  # منع عرض شريط التقدم
+    'postprocessors': [{  # معالجة بعد التنزيل
+        'key': 'FFmpegVideoConvertor',
+        'ext': 'mp4', 
+    }],
 }
 
-ydl = YoutubeDL(ydl_opts)
-
-def audio_dl(url: str) -> str:
-    sin = ydl.extract_info(url, False)
-    x_file = os.path.join("downloads", f"{sin['id']}_{sin['title']}.mp3")  # تضمين العنوان
-    if os.path.exists(x_file):
-        return x_file
-    ydl.download([url])
-    return x_file
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download(['https://www.youtube.com/watch?v=ا'])
