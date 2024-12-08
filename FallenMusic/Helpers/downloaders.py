@@ -44,15 +44,6 @@
 
 import os
 
-import yt_dlp
-
-   ydl_opts = {
-       'cookies': 'cookies.txt',
-   }
-
-   with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-       ydl.download(['https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=UCIzGvp9eP04X4DMdEmJpk7g&maxResults=25&key=[AIzaSyBnu63ZdfGU6WjOj8JG_P2Fn5rBZynRhIE]'])  # استبدل 'URL' بالرابط المطلوب
-   
 from yt_dlp import YoutubeDL
 
 ydl_opts = {
@@ -71,6 +62,10 @@ ydl_opts = {
         }
     ],
 }
+
+audio_file_path = audio_dl("https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=UCIzGvp9eP04X4DMdEmJpk7g&maxResults=25&key=[AIzaSyBnu63ZdfGU6WjOj8JG_P2Fn5rBZynRhIE]")
+print(f"تم تنزيل الصوت إلى: {audio_file_path}")
+
 ydl = YoutubeDL(ydl_opts)
 
 
