@@ -56,15 +56,7 @@ ydl_opts = {
     "prefer_ffmpeg": True,
     "postprocessors": [
         {
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "mp3",
-            "preferredquality": "320",
-        }
-    ],
-}
-
-audio_file_path = audio_dl("https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=UCIzGvp9eP04X4DMdEmJpk7g&maxResults=25&key=[AIzaSyBnu63ZdfGU6WjOj8JG_P2Fn5rBZynRhIE]")
-print(f"تم تنزيل الصوت إلى: {audio_file_path}")
+          
 
 ydl = YoutubeDL(ydl_opts)
 
