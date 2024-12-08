@@ -20,33 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
+from googleapiclient.discovery import build
 
-from yt_dlp import YoutubeDL
+api_key = 'AIzaSyBnu63ZdfGU6WjOj8JG_P2Fn5rBZynRhIE'
+youtube = build('youtube', 'v3', developerKey=api_key)
 
-ydl_opts = {
-    "format": "bestaudio/best",
-    "outtmpl": "downloads/%(id)s.%(ext)s",
-    "geo_bypass": True,
-    "nocheckcertificate": True,
-    "quiet": True,
-    "no_warnings": True,
-    "prefer_ffmpeg": True,
-    "postprocessors": [
-        {
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "mp3",
-            "preferredquality": "320",
-        }
-    ],
-}
-ydl = YoutubeDL(ydl_opts)
+# البحث عن مقاطع الفيديو الموسيقية المتعلقة بكلمة مفتاحية
+request = youtube.search().list(
+    q='music keyword',  # أدخل الكلمة المفتاحية
+    part='snippet',
+    type='video',
+    maxResults=5
+)
+response = request.execute()
 
-
-def audio_dl(url: str) -> str:
-    sin = ydl.extract_info(url, False)
-    x_file = os.path.join("downloads", f"{sin['id']}.mp3")
-    if os.path.exists(x_file):
-        return x_file
-    ydl.download([url])
-    return x_file
+# طباعة النتائج
+for item in response['items']:
+    print(f"Title: {item['snippet']['title']} - Channel: {item['snippet']['channelTitle']}")
