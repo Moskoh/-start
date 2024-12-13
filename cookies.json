@@ -1,0 +1,16 @@
+[{
+	"Host raw": "https://.youtube.com/",
+	"Name raw": "__Secure-YEC",
+	"Path raw": "/",
+	"Content raw": "CgtCQjFtOEc5cExQMCiGq_C6BjIKCgJHQhIEGgAgEA%3D%3D",
+	"Expires": "12-01-2026 13:07:14",
+	"Expires raw": "1768216034",
+	"Send for": "Encrypted connections only",
+	"Send for raw": "true",
+	"HTTP only raw": "true",
+	"SameSite raw": "lax",
+	"This domain only": "Valid for subdomains",
+	"This domain only raw": "false",
+	"Store raw": "firefox-default",
+	"First Party Domain": ""
+}]
