@@ -43,8 +43,11 @@
 # SOFTWARE.
 
 import os
-
 from yt_dlp import YoutubeDL
+
+# إنشاء مجلد التحميل إذا لم يكن موجودًا
+if not os.path.exists("downloads"):
+    os.makedirs("downloads")
 
 ydl_opts = {
     "format": "bestaudio/best",
@@ -59,17 +62,29 @@ ydl_opts = {
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
             "preferredquality": "320",
-           "api_key": "AIzaSyBnu63ZdfGU6WjOj8JG_P2Fn5rBZynRhIE",
         }
     ],
 }
+
 ydl = YoutubeDL(ydl_opts)
 
-
 def audio_dl(url: str) -> str:
-    sin = ydl.extract_info(url, False)
-    x_file = os.path.join("downloads", f"{sin['id']}.mp3")
-    if os.path.exists(x_file):
+    try:
+        sin = ydl.extract_info(url, download=False)
+
+        # تحقق مما إذا كانت المعلومات تحتوي على العنوان ورقم الهواية
+        if 'id' not in sin:
+            raise ValueError("لم يتم العثور على معرف الفيديو.")
+
+        x_file = os.path.join("downloads", f"{sin['id']}.mp3")
+        
+        if os.path.exists(x_file):
+            return x_file
+        
+        # بدء التحميل
+        ydl.download([url])
         return x_file
-    ydl.download([url])
-    return x_file
+    
+    except Exception as e:
+        print(f"حدث خطأ: {e}")
+        return None
