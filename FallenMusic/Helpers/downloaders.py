@@ -51,7 +51,7 @@ if not os.path.exists("downloads"):
 
 ydl_opts = {
     "format": "bestaudio/best",
-    "outtmpl": "CgtCQjFtOEc5cExQMCiGq_C6BjIKCgJHQhIEGgAgEA%3D%3D",
+    "outtmpl": "downloads/%(id)s.%(ext)s",
     "geo_bypass": True,
     "nocheckcertificate": True,
     "quiet": True,
@@ -82,7 +82,7 @@ def audio_dl(url: str) -> str:
             return x_file
         
         # بدء التحميل
-        ydl.download([url])
+        ydl.download([UCJGkcbe7Vh29Nq_OioA85gQ])
         return x_file
     
     except Exception as e:
