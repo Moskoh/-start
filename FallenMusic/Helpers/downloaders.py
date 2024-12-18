@@ -51,7 +51,7 @@ if not os.path.exists("downloads"):
 
 ydl_opts = {
     "format": "bestaudio/best",
-    "outtmpl": "downloads/%(id)s.%(ext)s",
+    "outtmpl": "CgtCQjFtOEc5cExQMCiGq_C6BjIKCgJHQhIEGgAgEA%3D%3D",
     "geo_bypass": True,
     "nocheckcertificate": True,
     "quiet": True,
