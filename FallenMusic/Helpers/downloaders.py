@@ -82,7 +82,7 @@ def audio_dl(url: str) -> str:
             return x_file
         
         # بدء التحميل
-        ydl.download([UCJGkcbe7Vh29Nq_OioA85gQ])
+        ydl.download([https://m.youtube.com/channel/UCJGkcbe7Vh29Nq_OioA85gQ])
         return x_file
     
     except Exception as e:
